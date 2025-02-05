@@ -1,0 +1,47 @@
+.sidebar {
+  padding: 16px 16px 16px;
+  width: 60px;
+  color: white;
+  transition: width 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar.open {
+  width: 170px;
+}
+
+.sidebar ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar ul li {
+  list-style: none;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul li h4 {
+  margin-left: 16px;
+  color: black;
+  opacity: 0;
+  max-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.sidebar.open ul li h4 {
+  opacity: 1;
+  max-width: 150px;
+  transform: translateX(0);
+}
+
+.sidebar ul li.settings {
+  margin-top: auto;
+}

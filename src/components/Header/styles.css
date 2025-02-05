@@ -1,0 +1,30 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #cbc5c5;
+  padding: 16px;
+}
+
+.header h1 {
+  line-height: 0;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+}
+
+.bars-icon {
+  margin-right: 2.25rem;
+}
+
+.bell-icon {
+  margin-right: 2.25rem;
+}

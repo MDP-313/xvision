@@ -1,0 +1,31 @@
+.home-page-container {
+  display: flex;
+  padding: 16px 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.map-container {
+  flex: 1;
+}
+
+.home-page-left-container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.home-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.scroll-container {
+  flex: 1;
+  max-width: 300px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}

@@ -1,0 +1,13 @@
+.item-card-container {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.item-card-container.selected {
+  background-color: lightblue;
+}
