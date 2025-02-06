@@ -35,3 +35,19 @@
   flex-direction: column;
   padding: 10px;
 }
+.infoSlideCard-icons-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.infoSlideCard-icon-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}

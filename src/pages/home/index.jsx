@@ -1,20 +1,45 @@
-import { useState } from 'react';
-import { APIProvider, Map, Marker, } from '@vis.gl/react-google-maps';
+import { useState, useEffect } from 'react';
+import { MapComponent } from '../../components';
 import { ItemCard, InfoSlideCard } from '../../components/pages/home'
 import { FaAlignRight } from "react-icons/fa";
 import { IoSearch } from "react-icons/io5";
-import useUserLocation from '../../hooks';
 import './styles.css';
 import data from '../../dummyData/dummyListVehicles';
-import svg from '../../assets/car.svg';
-import selectedSvg from '../../assets/selectedSvg.svg'
+import { APIProvider } from '@vis.gl/react-google-maps';
 
 const API_KEY = 'AIzaSyAJX4SOK0eJEwBht4SuT-WaFRXSL5-gs-8'
 
-
 const Home = () => {
   const [selectedMarker, setSelectedMarker] = useState(null);
-  const { location, error } = useUserLocation();
+  const [selectedTrip, setSelectedTrip] = useState(null);
+  const [location, setLocation] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLocation({
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          });
+        },
+        (error) => {
+          setError("Unable to retrieve location.");
+        }
+      );
+    } else {
+      setError("Geolocation is not supported by your browser.");
+    }
+  }, []);
+
+
+  const handleSelectedMarker = (selectedVehicle) => {
+    if (selectedVehicle?.id === selectedMarker?.id) return
+    setSelectedMarker(selectedVehicle)
+    setSelectedTrip(null)
+
+  }
 
   return (
     <div className="home-page-container">
@@ -24,27 +49,17 @@ const Home = () => {
           <FaAlignRight size={30} />
         </div>
         <div className="scroll-container">
-          {data?.vehicles?.map((item, i) => <ItemCard item={item} key={i} selected={selectedMarker?.id === item?.id} onSelect={(el) => setSelectedMarker(el)} />)}
+          {data?.vehicles?.map((item, i) => <ItemCard item={item} key={i} selected={selectedMarker?.id === item?.id} onSelect={(el) => handleSelectedMarker(el)} />)}
         </div>
       </div>
-      <div style={{ flex: 1 }}>
-        <APIProvider apiKey={API_KEY}>
-          <Map onClick={() => setSelectedMarker(null)} defaultZoom={10} gestureHandling={'greedy'}
-            disableDefaultUI={true} defaultCenter={location} >
-            {data?.vehicles?.map((item) => {
-              console.log('item', item)
-              return (
-                <Marker position={item?.coordinates} key={item?.id} icon={item?.id === selectedMarker?.id ? selectedSvg : svg} onClick={() => setSelectedMarker(item)}>
-                </Marker>
-              )
-
-            }
-            )}
-          </Map>
-        </APIProvider>
-      </div>
-      <InfoSlideCard selectedMarker={selectedMarker} />
+      {error && <p className="text-red-500">{error}</p>}
+      {!location && !error && <p>Loading location...</p>}
+      <APIProvider apiKey={API_KEY}>
+        {location && <MapComponent tripToShow={selectedTrip} location={location} markers={data} selectedMarker={selectedMarker} onSelectedMarker={(e) => setSelectedMarker(e)} />}
+      </APIProvider>
+      <InfoSlideCard selectedMarker={selectedMarker} onSelectedTrip={(trip) => setSelectedTrip(trip)} />
     </div>
   );
 };
+
 export default Home;
