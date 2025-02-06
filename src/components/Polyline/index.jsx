@@ -1,11 +1,10 @@
-/* eslint-disable complexity */
 import {
     forwardRef,
     useContext,
     useEffect,
     useImperativeHandle,
     useMemo,
-    useRef
+    useRef,
 } from 'react';
 
 import { GoogleMapsContext, useMapsLibrary } from '@vis.gl/react-google-maps';
@@ -18,10 +17,10 @@ function usePolyline(props) {
         onDragEnd,
         onMouseOver,
         onMouseOut,
-        encodedPath,
+        path,
         ...polylineOptions
     } = props;
-    // This is here to avoid triggering the useEffect below when the callbacks change (which happen if the user didn't memoize them)
+
     const callbacks = useRef({});
     Object.assign(callbacks.current, {
         onClick,
@@ -29,27 +28,22 @@ function usePolyline(props) {
         onDragStart,
         onDragEnd,
         onMouseOver,
-        onMouseOut
+        onMouseOut,
     });
 
     const geometryLibrary = useMapsLibrary('geometry');
-
     const polyline = useRef(new google.maps.Polyline()).current;
-    // update PolylineOptions (note the dependencies aren't properly checked
-    // here, we just assume that setOptions is smart enough to not waste a
-    // lot of time updating values that didn't change)
+
     useMemo(() => {
         polyline.setOptions(polylineOptions);
     }, [polyline, polylineOptions]);
 
     const map = useContext(GoogleMapsContext)?.map;
 
-    // update the path with the encodedPath
     useMemo(() => {
-        if (!encodedPath || !geometryLibrary) return;
-        const path = geometryLibrary.encoding.decodePath(encodedPath);
+        if (!path || !geometryLibrary) return;
         polyline.setPath(path);
-    }, [polyline, encodedPath, geometryLibrary]);
+    }, [polyline, path, geometryLibrary]);
 
     // create polyline instance and add to the map once the map is available
     useEffect(() => {
@@ -79,7 +73,7 @@ function usePolyline(props) {
             ['dragstart', 'onDragStart'],
             ['dragend', 'onDragEnd'],
             ['mouseover', 'onMouseOver'],
-            ['mouseout', 'onMouseOut']
+            ['mouseout', 'onMouseOut'],
         ].forEach(([eventName, eventCallback]) => {
             gme.addListener(polyline, eventName, (e) => {
                 const callback = callbacks.current[eventCallback];
