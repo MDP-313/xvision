@@ -4,6 +4,8 @@ import {
     Marker,
 } from '@vis.gl/react-google-maps';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
+import svg from '../../assets/car.svg';
+import selectedSvg from '../../assets/selectedSvg.svg'
 import PropTypes from 'prop-types';
 
 const Markers = ({ points, onClick, selected }) => {
@@ -45,10 +47,8 @@ const Markers = ({ points, onClick, selected }) => {
         <>
             {points?.map((point) => (
                 <Marker
-                    icon={{
-                        url: selected?.id === point?.id ? 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png' : 'https://maps.google.com/mapfiles/ms/icons/red-dot.png',
-                        scaledSize: new window.google.maps.Size(30, 30),
-                    }}
+                    icon={point?.id === selected?.id ? selectedSvg : svg}
+
                     position={point.coordinates}
                     key={point?.id}
                     ref={(marker) => setMarkerRef(marker, point?.id)}
