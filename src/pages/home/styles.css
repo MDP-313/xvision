@@ -5,10 +5,6 @@
   overflow: hidden;
 }
 
-.map-container {
-  flex: 1;
-}
-
 .home-page-left-container {
   display: flex;
   flex-direction: column;
@@ -28,6 +24,18 @@
   max-width: 300px;
   overflow-y: auto;
   margin-bottom: 16px;
+}
+
+.map-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-container {
+  margin-top: 30px;
+  position: relative;
+  overflow: visible !important; /* Prevents clipping */
 }
 
 .rect {

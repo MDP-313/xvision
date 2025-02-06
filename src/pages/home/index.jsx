@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import './styles.css';
 import data from '../../dummyData/dummyListVehicles';
 import { APIProvider } from '@vis.gl/react-google-maps';
+import Timeline from '../../components/Timeline';
 
 const API_KEY = 'AIzaSyAJX4SOK0eJEwBht4SuT-WaFRXSL5-gs-8'
 
@@ -38,10 +39,24 @@ const Home = () => {
     if (selectedVehicle?.id === selectedMarker?.id) return
     setSelectedMarker(selectedVehicle)
     setSelectedTrip(null)
-
   }
 
+
+
+
+  const activities = [
+    { start: "02:35:00", end: "04:30", },
+    { start: "08:15", end: "10:00" },
+    { start: "14:00", end: "16:45" },
+    { start: "20:30", end: "22:15" },
+  ];
+
+
+
+
+
   return (
+
     <div className="home-page-container">
       <div className="home-page-left-container">
         <div className='home-page-header'>
@@ -54,11 +69,20 @@ const Home = () => {
       </div>
       {error && <p className="text-red-500">{error}</p>}
       {!location && !error && <p>Loading location...</p>}
-      <APIProvider apiKey={API_KEY}>
-        {location && <MapComponent tripToShow={selectedTrip} location={location} markers={data} selectedMarker={selectedMarker} onSelectedMarker={(e) => setSelectedMarker(e)} />}
-      </APIProvider>
+
+      <div className='map-container'>
+        <APIProvider apiKey={API_KEY}>
+          {location && <MapComponent tripToShow={selectedTrip} location={location} markers={!selectedTrip ? data : null} selectedMarker={selectedMarker} onSelectedMarker={(e) => setSelectedMarker(e)} />}
+        </APIProvider>
+        <div className='timeline-container'>
+          <Timeline activities={activities} />
+        </div>
+      </div>
+
       <InfoSlideCard selectedMarker={selectedMarker} onSelectedTrip={(trip) => setSelectedTrip(trip)} />
-    </div>
+
+    </div >
+
   );
 };
 

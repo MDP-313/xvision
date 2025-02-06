@@ -9,8 +9,6 @@ const InfoSlideCard = ({ selectedMarker, onSelectedTrip }) => {
     const [showContent, setShowContent] = useState('preview');
     let content;
 
-    console.log(selectedMarker?.trips)
-
     switch (showContent) {
         case 'trips':
             content = (<div>
