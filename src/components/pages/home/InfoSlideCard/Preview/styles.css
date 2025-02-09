@@ -1,0 +1,56 @@
+.errorCodes-container {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.error-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.error-container p {
+  word-wrap: break-word;
+  white-space: normal;
+  font-style: italic;
+  font-weight: 600;
+  color: gray;
+}
+
+.icons-container {
+  padding: 12px 8px;
+  display: flex;
+  border-bottom: 2px solid #e0e0e0;
+}
+
+.icons-container h4 {
+  word-wrap: break-word;
+  white-space: normal;
+  font-style: italic;
+  font-weight: 600;
+  color: gray;
+}
+
+.icon-container {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.car-data-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.car-data-container p {
+  word-wrap: break-word;
+  white-space: normal;
+  font-style: italic;
+  font-weight: 600;
+  color: gray;
+  margin-bottom: 12px;
+}

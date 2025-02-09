@@ -44,13 +44,6 @@ const Home = () => {
 
 
 
-  const activities = [
-    { start: "02:35:00", end: "04:30", },
-    { start: "08:15", end: "10:00" },
-    { start: "14:00", end: "16:45" },
-    { start: "20:30", end: "22:15" },
-  ];
-
 
 
 
@@ -61,7 +54,7 @@ const Home = () => {
       <div className="home-page-left-container">
         <div className='home-page-header'>
           <IoSearch size={30} />
-          <FaAlignRight size={30} />
+          <FaAlignRight size={30} color='#30297d' />
         </div>
         <div className="scroll-container">
           {data?.vehicles?.map((item, i) => <ItemCard item={item} key={i} selected={selectedMarker?.id === item?.id} onSelect={(el) => handleSelectedMarker(el)} />)}
@@ -75,11 +68,13 @@ const Home = () => {
           {location && <MapComponent tripToShow={selectedTrip} location={location} markers={!selectedTrip ? data : null} selectedMarker={selectedMarker} onSelectedMarker={(e) => setSelectedMarker(e)} />}
         </APIProvider>
         <div className='timeline-container'>
-          <Timeline activities={activities} />
+          <Timeline activities={selectedMarker?.trips} />
         </div>
       </div>
+      <div>
+        <InfoSlideCard selectedMarker={selectedMarker} onSelectedTrip={(trip) => setSelectedTrip(trip)} />
+      </div>
 
-      <InfoSlideCard selectedMarker={selectedMarker} onSelectedTrip={(trip) => setSelectedTrip(trip)} />
 
     </div >
 

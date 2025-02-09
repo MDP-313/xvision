@@ -9,5 +9,33 @@
 }
 
 .item-card-container.selected {
-  background-color: lightblue;
+  background-color: rgb(203, 230, 240);
+}
+
+.item-card-left-container {
+  flex: 1;
+}
+.item-card-left-container h3 {
+  flex: 1;
+  margin-bottom: 8px;
+}
+
+.item-card-left-container p {
+  flex: 1;
+  font-weight: 600;
+  color: gray;
+}
+
+.item-card-right-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 10px;
+  align-items: center;
+  gap: 6px;
+}
+
+.item-card-right-container p {
+  font-weight: 600;
+  color: gray;
 }

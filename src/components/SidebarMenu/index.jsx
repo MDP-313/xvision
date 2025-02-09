@@ -21,7 +21,7 @@ const SidebarMenu = ({ open }) => {
                 <li onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}>
                     <div>
-                        <MdAddLocation size={30} color='black' />
+                        <MdAddLocation size={30} color='#30297d' />
                     </div>
                     <h4 className='item-title'>Location</h4>
 
@@ -29,35 +29,35 @@ const SidebarMenu = ({ open }) => {
                 <li onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}>
                     <div>
-                        <MdDashboard size={30} color='black' /></div>
+                        <MdDashboard size={30} color='#30297d' /></div>
                     <h4 className='item-title'>Dashboard</h4>
 
                 </li>
                 <li onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}>
                     <div>
-                        <PiMonitorPlayBold size={30} color='black' />
+                        <PiMonitorPlayBold size={30} color='#30297d' />
                     </div>
                     <h4 className='item-title'>Media</h4>
                 </li>
                 <li onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}>
                     <div>
-                        <FaExclamationCircle size={30} color='black' />
+                        <FaExclamationCircle size={30} color='#30297d' />
                     </div>
                     <h4 className='item-title'>Events</h4>
                 </li>
                 <li onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}>
                     <div>
-                        <FaChartBar size={30} color='black' />
+                        <FaChartBar size={30} color='#30297d' />
                     </div>
                     <h4 className='item-title'>Reports</h4>
                 </li>
                 <li className='settings' onMouseEnter={() => setHovered(true)}
                     onMouseLeave={() => setHovered(false)}>
                     <div>
-                        <IoMdSettings size={30} color='black' />
+                        <IoMdSettings size={30} color='#30297d' />
                     </div>
                     <h4>Settings</h4>
                 </li>

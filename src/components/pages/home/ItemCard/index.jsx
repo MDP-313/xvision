@@ -9,15 +9,16 @@ const ItemCard = ({ item, selected, onSelect }) => {
             onClick={() => onSelect(item)}
             className={`item-card-container ${selected ? 'selected' : ''}`}
         >
-            <div>
+            <div className='item-card-left-container'>
                 <h3>
                     {item?.make} {item?.model}
                 </h3>
                 <p>{item?.address}</p>
             </div>
-            <div>
+            <div className='item-card-right-container'>
                 <p>15 min ago</p>
-                <FaCar />
+                <FaCar size={30} />
+                <p>Parked</p>
             </div>
         </div>
     );
