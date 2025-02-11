@@ -1,53 +1,46 @@
 .infoSlideCard {
   width: 0px;
-  color: black;
   transition: width 0.3s ease;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-  border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
 .infoSlideCard.open {
   width: 270px;
+  padding: 0 8px;
+  margin-left: 0;
 }
 
 .infoSlideCard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 10px 0 10px;
+  padding: 8px;
   border-bottom: 2px solid #e0e0e0;
 }
 
-.errorCodes-container {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  border-bottom: 2px solid #e0e0e0;
+.infoSlideCard-header h3 {
+  font-weight: 600;
 }
 
-.details-container {
+.back-btn {
+  width: fit-content;
+  border-width: 0;
+  background-color: transparent;
+  text-align: center;
   display: flex;
-  flex-direction: column;
-  padding: 10px;
-}
-.infoSlideCard-icons-container {
-  padding: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid #e0e0e0;
+  font-size: 14px;
+  font-weight: 600;
+  word-wrap: break-word;
+  white-space: normal;
+  font-style: italic;
+  color: gray;
+  padding: 8px 12px 8px 0;
 }
 
-.infoSlideCard-icon-container {
-  display: flex;
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+.back-btn:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }

@@ -19,8 +19,8 @@ export default {
       trips: [
         {
           id: 1,
-          start: '2021-06-01T08:00:00Z',
-          end: '2021-06-01T08:30:00Z',
+          start: '08:00:00',
+          end: '8:30:00',
           distance: 10.5,
           duration: 30,
           // avg_speed: 21,
@@ -45,8 +45,8 @@ export default {
         },
         {
           id: 2,
-          start: '2021-06-01T09:00:00Z',
-          end: '2021-06-01T09:30:00Z',
+          start: '12:11:23',
+          end: '21:38:00',
           distance: 15.5,
           duration: 30,
           // avg_speed: 31,
@@ -68,6 +68,18 @@ export default {
             { lat: 42.7026130319218, lng: 23.29577403210037 },
             { lat: 42.703949031356615, lng: 23.29339950987049 },
           ],
+        },
+      ],
+      events: [
+        {
+          label: 'brake',
+          time: '2021-06-01T08:05:00Z',
+          video: '', // Leave empty or add a random video URL
+        },
+        {
+          label: 'turn',
+          time: '2021-06-01T08:10:00Z',
+          video: '', // Leave empty or add a random video URL
         },
       ],
     },

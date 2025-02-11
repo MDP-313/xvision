@@ -1,0 +1,60 @@
+.trip-card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.trip-card-header h4 {
+  white-space: normal;
+  font-style: italic;
+  font-weight: 600;
+  color: gray;
+}
+
+.flex-row {
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-row p {
+  word-wrap: break-word;
+  white-space: normal;
+  font-style: italic;
+  font-weight: 600;
+  color: gray;
+}
+
+.date-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.date-picker p {
+  margin: 0 8px;
+  word-wrap: break-word;
+  white-space: normal;
+  font-style: italic;
+  font-weight: 600;
+  color: gray;
+}
+
+.trip-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0;
+  /* border: 2px solid #3f36a0; */
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.trip-container:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+}

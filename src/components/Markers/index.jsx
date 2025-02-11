@@ -48,8 +48,7 @@ const Markers = ({ points, onClick, selected }) => {
             {points?.map((point) => (
                 <Marker
                     icon={point?.id === selected?.id ? selectedSvg : svg}
-
-                    position={point.coordinates}
+                    position={point?.coordinates}
                     key={point?.id}
                     ref={(marker) => setMarkerRef(marker, point?.id)}
                     onClick={() => onClick(point)}
