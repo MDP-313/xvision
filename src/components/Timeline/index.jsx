@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { motion } from "framer-motion";
 import "./styles.css";
 import { MdOutlineOndemandVideo } from "react-icons/md";
 import { BiSolidLeftArrow, BiSolidRightArrow } from "react-icons/bi";
@@ -33,14 +34,13 @@ const Timeline = ({ activities }) => {
     }
 
     return (
-        <>
+        <motion.div className='timeline-container' initial={{ y: 336 }} animate={{ y: 0 }} exit={{ y: 500 }} transition={{ duration: 0.3, ease: 'easeInOut' }} >
             <div className='time-line-date-picker'>
                 <BiSolidLeftArrow color='#30297d' />
                 <p>02/12/2025</p>
                 <BiSolidRightArrow color='#30297d' />
             </div>
             <div className="timeline">
-
                 {timelineSegments.map(({ start, end, active, startLabel, endLabel }, index) => (
                     <div
                         key={index}
@@ -60,7 +60,7 @@ const Timeline = ({ activities }) => {
                     </div>
                 ))}
             </div>
-        </>
+        </motion.div>
     );
 };
 

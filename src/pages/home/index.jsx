@@ -7,6 +7,7 @@ import './styles.css';
 import data from '../../dummyData/dummyListVehicles';
 import { APIProvider } from '@vis.gl/react-google-maps';
 import Timeline from '../../components/Timeline';
+import { AnimatePresence } from 'motion/react';
 
 const API_KEY = 'AIzaSyAJX4SOK0eJEwBht4SuT-WaFRXSL5-gs-8'
 
@@ -41,15 +42,7 @@ const Home = () => {
     setSelectedTrip(null)
   }
 
-
-
-
-
-
-
-
   return (
-
     <div className="home-page-container">
       <div className="home-page-left-container">
         <div className='home-page-header'>
@@ -67,17 +60,14 @@ const Home = () => {
         <APIProvider apiKey={API_KEY}>
           {location && <MapComponent tripToShow={selectedTrip} location={location} markers={!selectedTrip ? data : null} selectedMarker={selectedMarker} onSelectedMarker={(e) => setSelectedMarker(e)} />}
         </APIProvider>
-        <div className='timeline-container'>
-          <Timeline activities={selectedMarker?.trips} />
-        </div>
+        <AnimatePresence>
+          {selectedMarker && <Timeline activities={selectedMarker?.trips} />}
+        </AnimatePresence>
       </div>
       <div>
         <InfoSlideCard selectedMarker={selectedMarker} onSelectedTrip={(trip) => setSelectedTrip(trip)} />
       </div>
-
-
     </div >
-
   );
 };
 
